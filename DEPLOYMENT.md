@@ -1,12 +1,12 @@
-# Deployment Guide: GitHub & Vercel
+# Deployment Guide: GitHub & Render
 
-This guide walks you through deploying the Multi-Agent Game Tester POC on **GitHub** and **Vercel** following a similar pattern shown in the Vercel deployment video.
+This guide walks you through deploying the Multi-Agent Game Tester POC on **GitHub** and **Render** (recommended). The repo is configured to run the backend with `uvicorn` and serve the frontend static files from the same service at `/app`.
 
 ## Prerequisites
 
 1. Git installed on your machine
 2. GitHub account
-3. Vercel account (free tier available at https://vercel.com)
+3. Render account (free tier available at https://render.com)
 4. GitHub CLI (optional but recommended) or standard Git flow
 
 ---
@@ -16,9 +16,9 @@ This guide walks you through deploying the Multi-Agent Game Tester POC on **GitH
 The following have been configured:
 - ✅ `.gitignore` - excludes `venv/`, `.env`, `__pycache__/`, etc.
 - ✅ `.env.example` - template for environment variables
-- ✅ `vercel.json` - FastAPI/Python build configuration
-- ✅ `main.py` - updated to use environment variables for CORS
-- ✅ `frontend/index.html` - frontend automatically detects backend URL
+- ✅ `render.yaml` - Render service manifest (optional)
+- ✅ `main.py` / `api/index.py` - configured to mount `frontend/` at `/app` and use `FRONTEND_URL` for CORS
+- ✅ `frontend/index.html` - frontend uses same-origin API URL when served from the Render service
 
 ---
 
@@ -72,66 +72,43 @@ git push -u origin main
 
 ---
 
-## Step 3: Deploy Backend on Vercel
+## Step 3: Deploy Backend & Frontend on Render (recommended)
 
-1. **Go to Vercel Dashboard:**
-   - Visit https://vercel.com/dashboard
-   - Click **"Add New..."** → **"Project"**
+1. **Create a Render account:** https://render.com and connect your GitHub account.
 
-2. **Import from GitHub:**
-   - Click **"Import Project"**
-   - Paste your GitHub repository URL or select from list
-   - Click **"Import"**
+2. **Import the repository or create a new Web Service:**
+   - Choose **Web Service (Static/Server)** and point to this repository and `master` branch.
+   - If using `render.yaml`, import the manifest or let Render detect settings.
 
-3. **Configure Build Settings:**
-   - **Project Name:** `multi-agent-game-tester-backend` (or your choice)
-   - **Framework Preset:** Select **"Other"** (since Vercel auto-detects Python)
-   - **Root Directory:** Keep as default (project root)
+3. **Build & Start commands:**
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `uvicorn api.index:app --host 0.0.0.0 --port $PORT`
 
-4. **Add Environment Variables:**
-   - Click **"Environment Variables"**
-   - Add: `FRONTEND_URL` = `https://<your-frontend-url-will-go-here>.vercel.app`
-     (You'll update this after deploying frontend - for now use placeholder like `https://frontend-tbd.vercel.app`)
-   - Click **"Deploy"**
+4. **Environment variables:**
+   - `FRONTEND_URL` = `https://<your-render-service>.onrender.com` (the public URL Render gives you)
+   - `ENVIRONMENT` = `production`
 
-5. **Wait for Deployment:**
-   - Vercel will build and deploy your backend
-   - You'll get a URL like: `https://multi-agent-game-tester-backend.vercel.app`
-   - **Save this URL** - you need it for frontend deployment
+5. **Deploy:** Trigger a deploy; after build completes open `<your-render-service>/app` to see the UI.
 
-6. **Test Backend (Optional):**
+6. **Verify health:**
+   ```bash
+   curl https://<your-render-service>/health
+   # should return {"status":"healthy"}
    ```
-   curl https://multi-agent-game-tester-backend.vercel.app/health
-   ```
-   Should return: `{"status":"healthy"}`
 
 ---
 
-## Step 4: Deploy Frontend on Vercel
+## Step 4: Local testing
 
-1. **Create a New Project in Vercel:**
-   - Go to https://vercel.com/dashboard
-   - Click **"Add New..."** → **"Project"**
+1. Create and activate a virtualenv, install deps, and run locally:
 
-2. **Import Same Repository:**
-   - Click **"Import Project"**
-   - Select your `multi-agent-game-tester` repository
-   - Click **"Import"**
-
-3. **Configure for Frontend:**
-   - **Project Name:** `multi-agent-game-tester-frontend`
-   - **Framework Preset:** Detect `Other` (static files)
-   - **Root Directory:** Click **"Edit"** → Change to `frontend`
-   - **Build Command:** Leave blank (no build needed for static)
-   - **Output Directory:** Leave blank
-
-4. **Add Environment Variables:**
-   - Click **"Environment Variables"**
-   - Add: `REACT_APP_API_URL` = (Optional - our frontend auto-detects)
-   - Click **"Deploy"**
-
-5. **Get Frontend URL:**
-   - After deployment completes, you'll get: `https://multi-agent-game-tester-frontend.vercel.app`
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+uvicorn api.index:app --reload
+# open http://localhost:8000/app
+```
 
 ---
 
@@ -157,21 +134,18 @@ git push -u origin main
 
 ## Step 6: Final Testing
 
-1. **Open Frontend:**
-   ```
-   https://multi-agent-game-tester-frontend.vercel.app
-   ```
+1. **Open Frontend (Render):**
+   - `https://<your-render-service>/app`
 
 2. **Test the Workflow:**
    - Enter game URL (or use default: `https://play.ezygamers.com/`)
-   - Click **"Generate Plan"** → Should generate 20 test cases
-   - Click **"Execute Tests"** → Should execute top 10 and return report
+   - Click **"Generate Plan"** → Should generate test cases
+   - Click **"Execute Tests"** → Should execute and return a report
    - Click **"View Latest Report"** → Should display JSON report with artifacts
 
 3. **Verify No CORS Errors:**
    - Open browser DevTools (F12)
-   - Check Console tab - should have no CORS errors
-   - Check Network tab - API calls should show 200/success
+   - Check Console tab for errors and Network tab for successful API calls
 
 ---
 
@@ -205,8 +179,7 @@ If backend fails to import modules:
 
 ## URLs After Deployment
 
-- **Frontend:** `https://multi-agent-game-tester-frontend.vercel.app`
-- **Backend API:** `https://multi-agent-game-tester-backend.vercel.app`
+- **Frontend + Backend (Render):** `https://<your-render-service>` (frontend available at `/app`)
 - **GitHub Repository:** `https://github.com/YOUR_USERNAME/multi-agent-game-tester`
 
 ---

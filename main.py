@@ -32,17 +32,15 @@ allowed_origins = [
     frontend_url,
 ]
 
-# Allow all HTTPS origins in production (Vercel deploy)
+# In production, only allow the configured `FRONTEND_URL` to simplify CORS
 if environment == "production":
-    allowed_origins.append("https://*.vercel.app")
-    # Also add the specific frontend URL if it's an HTTPS Vercel domain
-    if "vercel.app" in frontend_url:
+    if frontend_url and frontend_url not in allowed_origins:
         allowed_origins.append(frontend_url)
 
-# Serve frontend static files (UI) - only if directory exists (local development)
+# Serve frontend static files (UI) - mount at /app for SPA support
 frontend_path = Path("frontend")
 if frontend_path.exists():
-    app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+    app.mount("/app", StaticFiles(directory="frontend", html=True), name="frontend")
 
 # Add CORS middleware
 app.add_middleware(
@@ -89,13 +87,7 @@ async def root():
     }
 
 
-@app.get("/app")
-async def serve_frontend():
-    """Serve the frontend index page if available"""
-    index_path = Path("frontend") / "index.html"
-    if index_path.exists():
-        return FileResponse(index_path)
-    return {"error": "frontend not found"}
+# Static files are mounted at /app above; no dedicated /app route is required.
 
 @app.get("/health")
 async def health_check():

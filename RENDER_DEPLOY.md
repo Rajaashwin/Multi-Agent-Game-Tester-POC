@@ -11,7 +11,7 @@ Render deployment steps (quick)
    - Plan: `Free` (or choose another)
 
 3) Add environment variables on Render (Dashboard -> Environment):
-   - `FRONTEND_URL` = your frontend URL (e.g., `https://<your-frontend>.vercel.app`)
+   - `FRONTEND_URL` = your frontend URL (e.g., `https://<your-frontend>.onrender.com`)
    - `ENVIRONMENT` = `production`
 
 4) (Optional) Use the provided `render.yaml` in the repo to import the service configuration.
