@@ -1,10 +1,8 @@
 #!/bin/bash
+set -e
 
-# Activate the virtual environment
-source venv/bin/activate
+# Install dependencies with --break-system-packages to handle externally-managed Python
+pip install --break-system-packages -r requirements.txt
 
-# Install dependencies
-pip install -r requirements.txt
-
-# Exit with success
+echo "Dependencies installed successfully"
 exit 0
