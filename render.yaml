@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: multi-agent-game-tester-api
+    env: python
+    # Replace with your GitHub repo URL if you want Render to connect automatically
+    repo: "https://github.com/<your-org-or-user>/Multi-Agent-Game-Tester-POC"
+    branch: master
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.index:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: FRONTEND_URL
+        value: "https://<your-frontend-domain>"
+      - key: ENVIRONMENT
+        value: "production"
+    plan: free
+    autoDeploy: true
