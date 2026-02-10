@@ -1,6 +1,6 @@
 {
-  "installCommand": "exit 0",
-  "buildCommand": "bash build.sh",
+  "installCommand": "pip install --break-system-packages -r requirements.txt",
+  "buildCommand": "exit 0",
   "routes": [
     {
       "src": "/(.*)",
