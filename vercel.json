@@ -1,4 +1,5 @@
 {
+  "installCommand": "",
   "buildCommand": "pip install --break-system-packages -r api/requirements.txt",
   "routes": [
     {
