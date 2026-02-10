@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
-# Set pip configuration to allow breaking system packages
+# Ensure pip reads our config and allows breaking system packages
 export PIP_BREAK_SYSTEM_PACKAGES=1
+export PIP_CONFIG_FILE="$PWD/.pip/pip.conf"
 
+echo "Using pip config: $PIP_CONFIG_FILE"
 echo "Installing dependencies with break-system-packages enabled..."
 pip install -r requirements.txt
 
