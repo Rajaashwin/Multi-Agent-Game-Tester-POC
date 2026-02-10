@@ -379,10 +379,10 @@
 
     <script>
         // Dynamically set API URL based on environment
-        // If localhost, use local backend; otherwise use Render backend
+        // If localhost, use local backend; otherwise use same-origin (works when served from Render)
         const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
             ? "http://localhost:8000"
-            : "https://multi-agent-game-tester-poc.onrender.com"; // Render backend for production
+            : window.location.origin;
 
         async function generatePlan() {
             const gameUrl = document.getElementById("game-url").value;

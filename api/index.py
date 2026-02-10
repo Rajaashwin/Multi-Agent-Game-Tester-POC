@@ -40,10 +40,10 @@ if environment == "production":
     if "vercel.app" in frontend_url:
         allowed_origins.append(frontend_url)
 
-# Serve frontend static files (UI) - only if directory exists (local development)
+# Serve frontend static files (UI) - mount at /app so Render serves the SPA
 frontend_path = Path("frontend")
 if frontend_path.exists():
-    app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+    app.mount("/app", StaticFiles(directory="frontend", html=True), name="frontend")
 
 # Add CORS middleware
 app.add_middleware(
@@ -90,13 +90,8 @@ async def root():
     }
 
 
-@app.get("/app")
-async def serve_frontend():
-    """Serve the frontend index page if available"""
-    index_path = Path("frontend") / "index.html"
-    if index_path.exists():
-        return FileResponse(index_path)
-    return {"error": "frontend not found"}
+# Note: static files for the frontend are mounted at /app via StaticFiles above.
+# The dedicated /app route has been removed in favor of StaticFiles to support SPA routing.
 
 @app.get("/health")
 async def health_check():
