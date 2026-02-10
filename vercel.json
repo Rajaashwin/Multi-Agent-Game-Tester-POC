@@ -1,4 +1,6 @@
 {
+  "buildCommand": "bash build.sh",
+  "installCommand": "",
   "routes": [
     {
       "src": "/(.*)",
