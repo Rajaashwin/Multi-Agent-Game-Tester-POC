@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Agent Game Tester POC</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .status {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .status.loading {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .report-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .report-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .verdict {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .verdict.pass {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .verdict.fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .verdict.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-card .label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .test-result-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+
+        .test-result-item.failed {
+            border-left-color: #dc3545;
+        }
+
+        .test-result-item.passed {
+            border-left-color: #28a745;
+        }
+
+        .test-id {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .test-description {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .test-verdict {
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .recommendation {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+
+        .recommendation-title {
+            font-weight: 600;
+            color: #0c5460;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        loading-overlay {
+            display: none;
+        }
+
+        .loading-overlay.active {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .loading-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .loading-content h3 {
+            margin-top: 15px;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Multi-Agent Game Tester POC</h1>
+            <p>Automated Testing System for Web-Based Games</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Planning Section -->
+            <div class="card">
+                <h2>📋 Test Planning</h2>
+                <div class="form-group">
+                    <label for="game-url">Game URL:</label>
+                    <input type="text" id="game-url" placeholder="https://play.ezygamers.com/" value="https://play.ezygamers.com/">
+                </div>
+                <div class="form-group">
+                    <label for="test-name">Test Name:</label>
+                    <input type="text" id="test-name" placeholder="Enter test name" value="Game Test">
+                </div>
+                <div class="button-group">
+                    <button class="btn-primary" onclick="generatePlan()">🚀 Generate Test Plan</button>
+                </div>
+                <div id="plan-status" class="status"></div>
+                <div id="plan-output"></div>
+            </div>
+
+            <!-- Execution Section -->
+            <div class="card">
+                <h2>⚡ Test Execution</h2>
+                <p style="color: #666; margin-bottom: 20px;">Execute the full testing workflow with all agents.</p>
+                <div class="button-group">
+                    <button class="btn-primary" onclick="executeTests()">▶️ Execute Tests</button>
+                    <button class="btn-secondary" onclick="checkStatus()">🔄 Check Status</button>
+                </div>
+                <div id="execution-status" class="status"></div>
+                <div id="execution-output"></div>
+            </div>
+        </div>
+
+        <!-- Report Section -->
+        <div id="report-section" style="display: none;">
+            <div class="report-section">
+                <h3>📊 Test Report</h3>
+                <div id="report-content"></div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <h3>Running Tests...</h3>
+                <p id="loading-message">Please wait while the agents test the game</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dynamically set API URL based on environment
+        // If deployed on Vercel, use same domain; otherwise use localhost:8000
+        const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? "http://localhost:8000"
+            : window.location.origin.replace(/:\d+$/, ''); // Remove port if present on deployed version
+
+        async function generatePlan() {
+            const gameUrl = document.getElementById("game-url").value;
+            const testName = document.getElementById("test-name").value;
+
+            showStatus("plan-status", "loading", "Generating test plan...");
+
+            try {
+                const response = await fetch(`${API_URL}/api/plan`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ game_url: gameUrl, test_name: testName })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const testCount = data.data.total_tests_generated;
+                    showStatus("plan-status", "success", `✅ Generated ${testCount} test cases`);
+                    
+                    let output = `<h3>Generated Test Cases (${testCount}):</h3><ul>`;
+                    data.data.test_cases.slice(0, 10).forEach(test => {
+                        output += `<li><strong>${test.id}:</strong> ${test.description}</li>`;
+                    });
+                    output += "</ul>";
+                    document.getElementById("plan-output").innerHTML = output;
+                } else {
+                    showStatus("plan-status", "error", `❌ Error: ${data.detail}`);
+                }
+            } catch (error) {
+                showStatus("plan-status", "error", `❌ Error: ${error.message}`);
+            }
+        }
+
+        async function executeTests() {
+            const gameUrl = document.getElementById("game-url").value;
+            const testName = document.getElementById("test-name").value;
+
+            showLoadingOverlay(true);
+            showStatus("execution-status", "loading", "Running tests...");
+
+            try {
+                const response = await fetch(`${API_URL}/api/execute`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ game_url: gameUrl, test_name: testName })
+                });
+
+                const data = await response.json();
+                showLoadingOverlay(false);
+
+                if (response.ok) {
+                    showStatus("execution-status", "success", "✅ Tests executed successfully!");
+                    displayReport(data);
+                } else {
+                    showStatus("execution-status", "error", `❌ Error: ${data.detail}`);
+                }
+            } catch (error) {
+                showLoadingOverlay(false);
+                showStatus("execution-status", "error", `❌ Error: ${error.message}`);
+            }
+        }
+
+        async function checkStatus() {
+            try {
+                const response = await fetch(`${API_URL}/api/status`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    const summary = data.summary;
+                    let statusText = `
+                        <strong>Workflow Status:</strong> ${data.status}<br>
+                        <strong>Tests Generated:</strong> ${summary.planning}<br>
+                        <strong>Tests Selected:</strong> ${summary.ranking}<br>
+                        <strong>Tests Executed:</strong> ${summary.execution.total_executed || 0}<br>
+                        <strong>Passed:</strong> ${summary.execution.passed || 0}<br>
+                        <strong>Failed:</strong> ${summary.execution.failed || 0}
+                    `;
+                    showStatus("execution-status", "success", statusText);
+                }
+            } catch (error) {
+                showStatus("execution-status", "error", `❌ Error: ${error.message}`);
+            }
+        }
+
+        async function displayReport(data) {
+            try {
+                const reportResponse = await fetch(`${API_URL}/api/latest-report`);
+                const reportData = await reportResponse.json();
+
+                if (reportResponse.ok) {
+                    const report = reportData.report;
+                    const summary = report.execution_summary;
+
+                    let html = `
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="number">${summary.test_cases_generated}</div>
+                                <div class="label">Generated</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="number">${summary.test_cases_selected}</div>
+                                <div class="label">Selected</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="number">${summary.test_cases_executed}</div>
+                                <div class="label">Executed</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="number">${summary.success_rate}</div>
+                                <div class="label">Success Rate</div>
+                            </div>
+                        </div>
+                    `;
+
+                    const verdict = report.verdicts;
+                    const verdictClass = verdict.overall_verdict.includes("PASS") && !verdict.overall_verdict.includes("FAIL") ? "pass" : 
+                                        verdict.overall_verdict.includes("FAIL") ? "fail" : "warning";
+                    
+                    html += `
+                        <div class="verdict ${verdictClass}">
+                            <strong>Verdict:</strong> ${verdict.overall_verdict}
+                        </div>
+                        <p><strong>Recommendation:</strong> ${verdict.recommendation}</p>
+                    `;
+
+                    if (report.test_results && report.test_results.length > 0) {
+                        html += "<h3>Test Results (Top 5):</h3>";
+                        report.test_results.slice(0, 5).forEach(test => {
+                            const resultClass = test.status === "passed" ? "passed" : "failed";
+                            html += `
+                                <div class="test-result-item ${resultClass}">
+                                    <span class="test-id">${test.test_id}:</span>
+                                    <div class="test-description">${test.description}</div>
+                                    <div class="test-verdict">Status: <strong>${test.verdict}</strong></div>
+                                </div>
+                            `;
+                        });
+                    }
+
+                    if (report.recommendations && report.recommendations.length > 0) {
+                        html += "<h3>Recommendations:</h3>";
+                        report.recommendations.forEach(rec => {
+                            html += `<div class="recommendation"><div class="recommendation-title">➜</div>${rec}</div>`;
+                        });
+                    }
+
+                    document.getElementById("report-content").innerHTML = html;
+                    document.getElementById("report-section").style.display = "block";
+                    document.getElementById("report-section").scrollIntoView({ behavior: "smooth" });
+                }
+            } catch (error) {
+                console.error("Error displaying report:", error);
+            }
+        }
+
+        function showStatus(elementId, type, message) {
+            const element = document.getElementById(elementId);
+            element.className = `status ${type}`;
+            
+            if (type === "loading") {
+                element.innerHTML = `<span class="spinner"></span>${message}`;
+            } else {
+                element.innerHTML = message;
+            }
+        }
+
+        function showLoadingOverlay(show) {
+            const overlay = document.getElementById("loading-overlay");
+            if (show) {
+                overlay.classList.add("active");
+            } else {
+                overlay.classList.remove("active");
+            }
+        }
+
+        // Test button clicks
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("🎮 Multi-Agent Game Tester POC loaded");
+            console.log("API URL:", API_URL);
+        });
+    </script>
+</body>
+</html>

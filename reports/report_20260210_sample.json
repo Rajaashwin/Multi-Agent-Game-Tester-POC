@@ -1,0 +1,273 @@
+{
+  "report_id": "report_20260210_sample",
+  "timestamp": "2026-02-10T12:30:45.123456",
+  "game_url": "https://play.ezygamers.com/",
+  "execution_summary": {
+    "test_cases_generated": 20,
+    "test_cases_selected": 10,
+    "test_cases_executed": 10,
+    "passed_count": 9,
+    "failed_count": 1,
+    "success_rate": "90%"
+  },
+  "test_results": [
+    {
+      "test_id": "test_1",
+      "description": "Click button 'submit' and verify result",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_1 passed. No issues detected.",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_1_screenshot.png",
+        "dom_snapshot": "artifacts/test_1_dom.json",
+        "console_logs": "artifacts/test_1_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.95
+      },
+      "triage_notes": "Test test_1 passed. No issues detected."
+    },
+    {
+      "test_id": "test_2",
+      "description": "Enter value '0' in input field and submit",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_2 passed. No issues detected.",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_2_screenshot.png",
+        "dom_snapshot": "artifacts/test_2_dom.json",
+        "console_logs": "artifacts/test_2_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.78
+      },
+      "triage_notes": "Test test_2 passed. No issues detected."
+    },
+    {
+      "test_id": "test_3",
+      "description": "Test keyboard shortcut 'Enter'",
+      "status": "failed",
+      "verdict": "FAILED",
+      "evidence": "Error handling test failed - unexpected behavior",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_3_screenshot.png",
+        "dom_snapshot": "artifacts/test_3_dom.json",
+        "console_logs": "artifacts/test_3_console.txt"
+      },
+      "validation": {
+        "repeatability": "consistently_failing",
+        "consistency": "inconsistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "FAILED",
+        "reproducibility_score": 0.92
+      },
+      "triage_notes": "Test test_3 failed. Requires investigation. Evidence: Error handling test failed - unexpected behavior"
+    },
+    {
+      "test_id": "test_4",
+      "description": "Verify error handling for invalid input 'invalid'",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_4 passed. No issues detected.",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_4_screenshot.png",
+        "dom_snapshot": "artifacts/test_4_dom.json",
+        "console_logs": "artifacts/test_4_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.88
+      },
+      "triage_notes": "Test test_4 passed. No issues detected."
+    },
+    {
+      "test_id": "test_5",
+      "description": "Test boundary condition with value '999999'",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_5 passed. No issues detected.",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_5_screenshot.png",
+        "dom_snapshot": "artifacts/test_5_dom.json",
+        "console_logs": "artifacts/test_5_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.81
+      },
+      "triage_notes": "Test test_5 passed. No issues detected."
+    },
+    {
+      "test_id": "test_6",
+      "description": "Load game and verify initial state",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_6 passed. No issues detected.",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_6_screenshot.png",
+        "dom_snapshot": "artifacts/test_6_dom.json",
+        "console_logs": "artifacts/test_6_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.96
+      },
+      "triage_notes": "Test test_6 passed. No issues detected."
+    },
+    {
+      "test_id": "test_7",
+      "description": "Check all visible buttons are clickable",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_7 passed. No issues detected.",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_7_screenshot.png",
+        "dom_snapshot": "artifacts/test_7_dom.json",
+        "console_logs": "artifacts/test_7_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.89
+      },
+      "triage_notes": "Test test_7 passed. No issues detected."
+    },
+    {
+      "test_id": "test_8",
+      "description": "Verify no JavaScript errors on load",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_8 passed. No issues detected.",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_8_screenshot.png",
+        "dom_snapshot": "artifacts/test_8_dom.json",
+        "console_logs": "artifacts/test_8_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.92
+      },
+      "triage_notes": "Test test_8 passed. No issues detected."
+    },
+    {
+      "test_id": "test_9",
+      "description": "Test page performance and load time",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_9 passed. No issues detected.",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_9_screenshot.png",
+        "dom_snapshot": "artifacts/test_9_dom.json",
+        "console_logs": "artifacts/test_9_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.85
+      },
+      "triage_notes": "Test test_9 passed. No issues detected."
+    },
+    {
+      "test_id": "test_10",
+      "description": "Verify page accessibility",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_10 passed. No issues detected.",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_10_screenshot.png",
+        "dom_snapshot": "artifacts/test_10_dom.json",
+        "console_logs": "artifacts/test_10_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.87
+      },
+      "triage_notes": "Test test_10 passed. No issues detected."
+    }
+  ],
+  "validation_report": {
+    "total_validated": 10,
+    "validation_passed": 10,
+    "validation_failed": 0,
+    "flaky_tests": 1,
+    "overall_success_rate": "90%"
+  },
+  "cross_agent_analysis": {
+    "status": "consistent",
+    "agents_checked": [
+      "ExecutorAgent-1",
+      "ExecutorAgent-2"
+    ],
+    "consistency_score": 0.95,
+    "notes": "Results validated across multiple agents. High consistency achieved."
+  },
+  "artifacts": {
+    "total_count": 30,
+    "by_type": {
+      "screenshots": 10,
+      "dom_snapshots": 10,
+      "console_logs": 10
+    }
+  },
+  "verdicts": {
+    "overall_verdict": "PASS WITH MINOR ISSUES",
+    "pass_rate": "90%",
+    "critical_issues": 1,
+    "recommendation": "Game has some minor issues that should be addressed"
+  },
+  "recommendations": [
+    "Fix 1 failing test(s) before release",
+    "Investigate keyboard shortcut handling (test_3)",
+    "Continue regression testing in production-like environment",
+    "Monitor game performance metrics",
+    "Set up automated continuous testing pipeline"
+  ],
+  "metadata": {
+    "total_duration": "7.5 seconds",
+    "agents_involved": [
+      "PlannerAgent",
+      "RankerAgent",
+      "ExecutorAgent-1",
+      "ExecutorAgent-2",
+      "AnalyzerAgent"
+    ],
+    "report_version": "1.0"
+  }
+}

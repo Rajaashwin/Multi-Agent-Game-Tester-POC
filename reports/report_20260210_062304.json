@@ -1,0 +1,423 @@
+{
+  "report_id": "report_20260210_062304",
+  "timestamp": "2026-02-10T06:23:04.229254",
+  "game_url": "https://play.ezygamers.com/",
+  "execution_summary": {
+    "test_cases_generated": 20,
+    "test_cases_selected": 10,
+    "test_cases_executed": 10,
+    "passed_count": 10,
+    "failed_count": 0,
+    "success_rate": "100.0%"
+  },
+  "test_results": [
+    {
+      "test_id": "test_12",
+      "description": "Enter value 'invalid' and verify handling",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_12 executed successfully",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_12_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_12_dom.json",
+        "console_logs": "artifacts/test_test_12_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.93
+      },
+      "triage_notes": "Test test_12 passed. No issues detected."
+    },
+    {
+      "test_id": "test_13",
+      "description": "Enter value '' and verify handling",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_13 executed successfully",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_13_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_13_dom.json",
+        "console_logs": "artifacts/test_test_13_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.94
+      },
+      "triage_notes": "Test test_13 passed. No issues detected."
+    },
+    {
+      "test_id": "test_1",
+      "description": "Click button 'submit' and verify result",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_1 executed successfully",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_1_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_1_dom.json",
+        "console_logs": "artifacts/test_test_1_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.93
+      },
+      "triage_notes": "Test test_1 passed. No issues detected."
+    },
+    {
+      "test_id": "test_2",
+      "description": "Test rapid clicking of button 'submit' 3 times",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_2 executed successfully",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_2_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_2_dom.json",
+        "console_logs": "artifacts/test_test_2_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.99
+      },
+      "triage_notes": "Test test_2 passed. No issues detected."
+    },
+    {
+      "test_id": "test_16",
+      "description": "Verify no JavaScript errors on load",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_16 executed successfully",
+      "executor": "ExecutorAgent-1",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_16_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_16_dom.json",
+        "console_logs": "artifacts/test_test_16_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.91
+      },
+      "triage_notes": "Test test_16 passed. No issues detected."
+    },
+    {
+      "test_id": "test_7",
+      "description": "Enter value '0' and verify handling",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_7 executed successfully",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_7_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_7_dom.json",
+        "console_logs": "artifacts/test_test_7_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.96
+      },
+      "triage_notes": "Test test_7 passed. No issues detected."
+    },
+    {
+      "test_id": "test_8",
+      "description": "Enter value '1' and verify handling",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_8 executed successfully",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_8_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_8_dom.json",
+        "console_logs": "artifacts/test_test_8_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.94
+      },
+      "triage_notes": "Test test_8 passed. No issues detected."
+    },
+    {
+      "test_id": "test_9",
+      "description": "Enter value '-1' and verify handling",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_9 executed successfully",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_9_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_9_dom.json",
+        "console_logs": "artifacts/test_test_9_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.85
+      },
+      "triage_notes": "Test test_9 passed. No issues detected."
+    },
+    {
+      "test_id": "test_10",
+      "description": "Enter value '999999' and verify handling",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_10 executed successfully",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_10_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_10_dom.json",
+        "console_logs": "artifacts/test_test_10_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.88
+      },
+      "triage_notes": "Test test_10 passed. No issues detected."
+    },
+    {
+      "test_id": "test_11",
+      "description": "Enter value '0.5' and verify handling",
+      "status": "passed",
+      "verdict": "PASSED",
+      "evidence": "Test test_11 executed successfully",
+      "executor": "ExecutorAgent-2",
+      "artifacts": {
+        "screenshot": "artifacts/test_test_11_screenshot.png",
+        "dom_snapshot": "artifacts/test_test_11_dom.json",
+        "console_logs": "artifacts/test_test_11_console.txt"
+      },
+      "validation": {
+        "repeatability": "repeatable",
+        "consistency": "consistent",
+        "evidence_quality": "sufficient_evidence",
+        "verdict": "PASSED",
+        "reproducibility_score": 0.89
+      },
+      "triage_notes": "Test test_11 passed. No issues detected."
+    }
+  ],
+  "validation_report": {
+    "total_validated": 10,
+    "validation_passed": 10,
+    "validation_failed": 0,
+    "flaky_tests": 0,
+    "overall_success_rate": "100.0%"
+  },
+  "cross_agent_analysis": {
+    "status": "consistent",
+    "agents_checked": [
+      "ExecutorAgent-1",
+      "ExecutorAgent-2"
+    ],
+    "consistency_score": 0.95,
+    "notes": "Results validated across multiple agents. High consistency achieved."
+  },
+  "artifacts": {
+    "total_count": 30,
+    "by_type": {
+      "screenshots": 10,
+      "dom_snapshots": 10,
+      "console_logs": 10
+    },
+    "items": [
+      {
+        "test_id": "test_12",
+        "type": "screenshot",
+        "path": "artifacts/test_test_12_screenshot.png"
+      },
+      {
+        "test_id": "test_12",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_12_dom.json"
+      },
+      {
+        "test_id": "test_12",
+        "type": "console_logs",
+        "path": "artifacts/test_test_12_console.txt"
+      },
+      {
+        "test_id": "test_13",
+        "type": "screenshot",
+        "path": "artifacts/test_test_13_screenshot.png"
+      },
+      {
+        "test_id": "test_13",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_13_dom.json"
+      },
+      {
+        "test_id": "test_13",
+        "type": "console_logs",
+        "path": "artifacts/test_test_13_console.txt"
+      },
+      {
+        "test_id": "test_1",
+        "type": "screenshot",
+        "path": "artifacts/test_test_1_screenshot.png"
+      },
+      {
+        "test_id": "test_1",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_1_dom.json"
+      },
+      {
+        "test_id": "test_1",
+        "type": "console_logs",
+        "path": "artifacts/test_test_1_console.txt"
+      },
+      {
+        "test_id": "test_2",
+        "type": "screenshot",
+        "path": "artifacts/test_test_2_screenshot.png"
+      },
+      {
+        "test_id": "test_2",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_2_dom.json"
+      },
+      {
+        "test_id": "test_2",
+        "type": "console_logs",
+        "path": "artifacts/test_test_2_console.txt"
+      },
+      {
+        "test_id": "test_16",
+        "type": "screenshot",
+        "path": "artifacts/test_test_16_screenshot.png"
+      },
+      {
+        "test_id": "test_16",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_16_dom.json"
+      },
+      {
+        "test_id": "test_16",
+        "type": "console_logs",
+        "path": "artifacts/test_test_16_console.txt"
+      },
+      {
+        "test_id": "test_7",
+        "type": "screenshot",
+        "path": "artifacts/test_test_7_screenshot.png"
+      },
+      {
+        "test_id": "test_7",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_7_dom.json"
+      },
+      {
+        "test_id": "test_7",
+        "type": "console_logs",
+        "path": "artifacts/test_test_7_console.txt"
+      },
+      {
+        "test_id": "test_8",
+        "type": "screenshot",
+        "path": "artifacts/test_test_8_screenshot.png"
+      },
+      {
+        "test_id": "test_8",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_8_dom.json"
+      },
+      {
+        "test_id": "test_8",
+        "type": "console_logs",
+        "path": "artifacts/test_test_8_console.txt"
+      },
+      {
+        "test_id": "test_9",
+        "type": "screenshot",
+        "path": "artifacts/test_test_9_screenshot.png"
+      },
+      {
+        "test_id": "test_9",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_9_dom.json"
+      },
+      {
+        "test_id": "test_9",
+        "type": "console_logs",
+        "path": "artifacts/test_test_9_console.txt"
+      },
+      {
+        "test_id": "test_10",
+        "type": "screenshot",
+        "path": "artifacts/test_test_10_screenshot.png"
+      },
+      {
+        "test_id": "test_10",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_10_dom.json"
+      },
+      {
+        "test_id": "test_10",
+        "type": "console_logs",
+        "path": "artifacts/test_test_10_console.txt"
+      },
+      {
+        "test_id": "test_11",
+        "type": "screenshot",
+        "path": "artifacts/test_test_11_screenshot.png"
+      },
+      {
+        "test_id": "test_11",
+        "type": "dom_snapshot",
+        "path": "artifacts/test_test_11_dom.json"
+      },
+      {
+        "test_id": "test_11",
+        "type": "console_logs",
+        "path": "artifacts/test_test_11_console.txt"
+      }
+    ]
+  },
+  "verdicts": {
+    "overall_verdict": "PASS",
+    "pass_rate": "100.0%",
+    "critical_issues": 0,
+    "recommendation": "Game is stable and ready for release"
+  },
+  "recommendations": [
+    "Continue regression testing in production-like environment",
+    "Monitor game performance metrics",
+    "Set up automated continuous testing pipeline"
+  ],
+  "metadata": {
+    "total_duration": "7.0 seconds",
+    "agents_involved": [
+      "PlannerAgent",
+      "RankerAgent",
+      "ExecutorAgent-1",
+      "ExecutorAgent-2",
+      "AnalyzerAgent"
+    ],
+    "report_version": "1.0"
+  }
+}
