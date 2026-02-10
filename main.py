@@ -39,8 +39,10 @@ if environment == "production":
     if "vercel.app" in frontend_url:
         allowed_origins.append(frontend_url)
 
-# Serve frontend static files (UI)
-app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
+# Serve frontend static files (UI) - only if directory exists (local development)
+frontend_path = Path("frontend")
+if frontend_path.exists():
+    app.mount("/frontend", StaticFiles(directory="frontend"), name="frontend")
 
 # Add CORS middleware
 app.add_middleware(
