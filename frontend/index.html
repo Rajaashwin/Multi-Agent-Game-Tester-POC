@@ -379,10 +379,10 @@
 
     <script>
         // Dynamically set API URL based on environment
-        // If deployed on Vercel, use same domain; otherwise use localhost:8000
+        // If localhost, use local backend; otherwise use Render backend
         const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
             ? "http://localhost:8000"
-            : window.location.origin.replace(/:\d+$/, ''); // Remove port if present on deployed version
+            : "https://multi-agent-game-tester-poc.onrender.com"; // Render backend for production
 
         async function generatePlan() {
             const gameUrl = document.getElementById("game-url").value;
