@@ -38,7 +38,7 @@ echo ====================================================================
 echo                    SERVER STARTING...
 echo ====================================================================
 echo.
-echo Web Interface: http://localhost:8000/docs
+echo Web Interface: http://localhost:8000/app
 echo API Server   : http://localhost:8000
 echo.
 echo The browser should open automatically...
@@ -48,8 +48,9 @@ echo Press Ctrl+C to stop the server
 echo ====================================================================
 echo.
 
-START http://localhost:8000
 
-python main.py
+START http://localhost:8000/app
+
+uvicorn api.index:app --host 0.0.0.0 --port 8000
 
 pause

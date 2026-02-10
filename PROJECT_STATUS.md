@@ -114,7 +114,7 @@ Follow [GITHUB_UPLOAD.md](GITHUB_UPLOAD.md) guide:
 
 ```
 Your Project Folder/
-├── ✅ main.py                    - FastAPI app
+├── ✅ api/index.py                - FastAPI app (entrypoint for uvicorn/Render)
 ├── ✅ requirements.txt           - Dependencies
 ├── ✅ README.md                  - Full documentation
 ├── ✅ QUICK_START.md             - Setup guide

@@ -48,22 +48,22 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Start the Server
+### 3. Start the Server (Local)
 
 ```bash
-python main.py
+# from project root, with virtualenv activated
+uvicorn api.index:app --reload --host 0.0.0.0 --port 8000
 ```
 
-Server will start at `http://localhost:8000`
+Server will start at `http://localhost:8000` and the frontend SPA is served at `/app`.
 
 ### 4. Open the Frontend
 
 Open your browser and go to:
 ```
-http://localhost:8000/docs
+http://localhost:8000/app
 ```
-
-Or create a simple HTML file and open `frontend/index.html` in your browser.
+Or open `frontend/index.html` directly for a static preview.
 
 ## 📖 Usage
 
@@ -108,7 +108,7 @@ curl http://localhost:8000/api/status
 
 ```
 Intern Multi-Agent Game Tester POC/
-├── main.py                    # FastAPI application
+├── api/index.py               # FastAPI application entrypoint (used by Render/uvicorn)
 ├── requirements.txt           # Python dependencies
 ├── frontend/
 │   └── index.html            # Web UI

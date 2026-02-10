@@ -39,11 +39,11 @@ echo Starting FastAPI Server...
 echo ======================================
 echo.
 echo Server will start at http://localhost:8000
-echo Frontend: http://localhost:8000/docs
+echo Frontend: http://localhost:8000/app
 echo.
 echo Press Ctrl+C to stop the server
 echo.
 
-python main.py
+uvicorn api.index:app --host 0.0.0.0 --port 8000
 
 pause

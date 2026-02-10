@@ -27,7 +27,7 @@
 
 2. Drag and drop all files from your project folder:
    ```
-   ├── main.py
+   ├── api/index.py
    ├── requirements.txt
    ├── README.md
    ├── QUICK_START.md

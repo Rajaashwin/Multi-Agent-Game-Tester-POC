@@ -32,8 +32,8 @@ venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the server
-python main.py
+# Run the server (use uvicorn - serves frontend at /app)
+uvicorn api.index:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ## Step 3: Open in Browser
@@ -41,10 +41,10 @@ python main.py
 After the server starts, go to:
 
 ```
-http://localhost:8000/docs
+http://localhost:8000/app
 ```
 
-Or open `frontend/index.html` directly in your browser.
+Or open `frontend/index.html` directly in your browser for a static preview.
 
 ## Step 4: Run Demo
 
@@ -85,8 +85,8 @@ Or open `frontend/index.html` directly in your browser.
 
 ```
 Your Project Folder:
-├── run.bat                     <- Double-click to start
-├── main.py                     <- Backend code
+├── run.bat                     <- Double-click to start (starts uvicorn)
+├── api/index.py                <- Backend code (entrypoint for uvicorn)
 ├── frontend/
 │   └── index.html             <- Open this in browser
 ├── reports/                   <- Test reports saved here
