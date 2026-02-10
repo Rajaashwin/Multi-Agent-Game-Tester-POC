@@ -1,14 +1,9 @@
 {
-  "functions": {
-    "api/index.py": {
-      "runtime": "python3.12"
-    }
-  },
-  "buildCommand": "pip install --upgrade pip && pip install --break-system-packages -r api/requirements.txt",
+  "buildCommand": "pip install --break-system-packages -r api/requirements.txt",
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/api"
+      "dest": "/api/index.py"
     }
   ]
 }
