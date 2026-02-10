@@ -239,7 +239,3 @@ async def list_reports():
             print(f"Error reading report {report_file}: {e}")
     
     return {"status": "success", "reports": reports}
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
