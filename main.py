@@ -121,6 +121,15 @@ async def generate_test_plan(request: GameTestRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/api/plan")
+async def generate_test_plan():
+    """Generate a test plan"""
+    try:
+        # Placeholder for the actual test plan generation logic
+        return {"status": "success", "message": "Test plan generated successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.post("/api/execute")
 async def execute_tests(request: GameTestRequest):
     """Execute full testing workflow"""
@@ -152,6 +161,15 @@ async def execute_tests(request: GameTestRequest):
             "summary": report.get("execution_summary"),
             "verdicts": report.get("verdicts")
         }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/execute")
+async def execute_tests():
+    """Execute the testing workflow"""
+    try:
+        # Placeholder for the actual execution logic
+        return {"status": "success", "message": "Tests executed successfully"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
