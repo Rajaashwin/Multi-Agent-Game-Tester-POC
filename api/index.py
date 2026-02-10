@@ -1,3 +1,4 @@
+# This is a Python file, not a markdown file.
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -152,7 +153,8 @@ async def execute_tests(request: GameTestRequest):
             "summary": report.get("execution_summary"),
             "verdicts": report.get("verdicts")
         }
-
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 @app.get("/api/status")
 async def get_workflow_status():
     """Get status of latest workflow"""
