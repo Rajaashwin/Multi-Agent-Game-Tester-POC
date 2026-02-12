@@ -344,3 +344,13 @@ Intern Multi-Agent Game Tester POC - February 2026
 **Ready to impress in your interview! 🎯**
 
 For questions or issues, check the troubleshooting section above.
+
+---
+
+## Demo Recording (Short)
+
+- **File:** `artifacts/demo_trim.mp4` (20s)
+- **What's shown:** quick headless run that demonstrates clicking "Generate Test Plan", clicking "Execute Tests" (short execution), and opening the latest report.
+- **How to view/download:** open `f:/Intern Multi-Agent Game Tester POC/artifacts/demo_trim.mp4` in your file explorer, or download from the repository workspace before submission.
+
+This short clip is intended for quick review; use the live site or local run for a full demo.
