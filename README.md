@@ -106,12 +106,6 @@ curl http://localhost:8000/api/status
 
 ## 📁 Project Structure
 
-```
-Intern Multi-Agent Game Tester POC/
-├── api/index.py               # FastAPI application entrypoint (used by Render/uvicorn)
-├── requirements.txt           # Python dependencies
-├── frontend/
-│   └── index.html            # Web UI
 ├── src/
 │   ├── __init__.py
 │   ├── orchestrator.py       # OrchestratorAgent
@@ -125,8 +119,6 @@ Intern Multi-Agent Game Tester POC/
 │       ├── executor.py       # ExecutorAgent
 │       └── analyzer.py       # AnalyzerAgent
 ├── reports/                  # Generated test reports
-├── artifacts/               # Captured artifacts (screenshots, logs)
-└── README.md               # This file
 ```
 
 ## 🤖 Agent Descriptions
